@@ -1,25 +1,38 @@
 ---
+poster_height: 46in
+poster_width: 33in
 title: Evaluating Accuracy and Reliability of Brain-Behavior Models Using Diffusion MRI 
 author:
   - name: McKenzie Paige Hagen
     affil: 1
     orcid: '0000-0002-1099-3857' #TODO
-  - name: Ariel Rokem
+  - name: John Kruper
     affil: 1
+  - name: Keshav Motwani 
+    affil: 2
   - name: Eardi Lila
     affil: 2
+  - name: Jason Yeatman
+    affil: 3
+  - name: Ariel Rokem
+    affil: 1
 affiliation:
   - num: 1
     address: Department of Psychology, University of Washington
   - num: 2
     address: Department of Biostatistics, University of Washington
-column_numbers: 3
-logoright_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
-logoleft_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
+  - num: 3
+    address: Graduate School of Education, Stanford University
+affiliation_textsize: "16pt" 
+column_numbers: 2
 output: 
   posterdown::posterdown_html:
     self_contained: true
+    css: style.css
 bibliography: packages.bib
+knit: pagedown::chrome_print
+header-includes: | 
+  \usepackage{dcolumn}
 
 ---
 
@@ -27,58 +40,59 @@ bibliography: packages.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction
+<!-- #region -->
+# Background
 
-Welcome to `posterdown` ! This is my attempt to provide a semi-smooth workflow for those who wish to take their R Markdown skills to the conference world. Most features from R Markdown are available in this package such as Markdown section notation, figure captioning, and even citations like this one [@R-rmarkdown]. The rest of this example poster will show how you can insert typical conference poster features into your own document. 
-
-## Objectives
-
-1. Easy to use reproducible poster design. 
-2. Integration with R Markdown.
-3. Easy transition from `posterdown` to `pagedown` report or manuscript documents [@R-pagedown].
-
+- Diffusion MRI measures tissue properties of white matter, which contains long-range connections between different brain regions.
+- Raw diffusion data can be engineered into different "feature sets" for use in predictive models. 
+- Comparison of a variety of feature sets and models for both accuracy of predicutions and variance/bias of beta coefficients can help determine which models are more optimal for different feature sets.
+  
 # Methods
 
-This package uses the same workflow approach as the R Markdown you know and love. Basically it goes from RMarkdown > Knitr > Markdown > Pandoc > HTML/CSS > PDF. You can even use the bibliography the same way [@R-posterdown].
+- We used diffusion data from 1041 participants from the Human Connectome Project, processed into "tract profiles" using pyAFQ (cite) and "local connectome" features using DSI-Studio (cite).
+- LASSO models were run on both tract profiles and local connectome to predict a variety of cognitive outcomes.
+- Sparse Group LASSO (SGL) models were run on only tract profiles, to take advantage of the inherent grouping of the data.
+- Models were implemented in `R` and trained using nested cross-validation and boostrap resampling. 
 
+- Explanation of/diagram of SGL here.
+
+- spacing
+- more spacing
+
+- For spacing
+
+  
 # Results
 
-Usually you want to have a nice table displaying some important results that you have calculated. In `posterdown` this is as easy as using the `kable` table formatting you are probably use to as per typical R Markdown formatting.
+- There were no significant differences in the accuracy of models using tract profiles and local connectomes as their input features (Figure 1.)
+- There were significant differences in the variability of model weights for LASSO and SGL models. 
 
-You can reference tables like so: Table \@ref(tab:mytable). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat augue at velit tincidunt semper. Donec elementum porta posuere. Nullam interdum, odio at tincidunt feugiat, turpis nisi blandit eros, eu posuere risus felis non quam. Nam eget lorem odio. Duis et aliquet orci. Phasellus nec viverra est.
+<!-- #endregion -->
 
-```{r mytable, out.width="80%"}
-knitr::kable(iris[1:10, 1:4], caption = 'Table caption.',align = 'c',"html")
-```
+|                              | **LASSO**          | **LC**          | **SGL**          |
+|------------------------------|--------------------|-----------------|------------------|
+| **Age**                      | 3e-01              | 1.8e-01         | 3.1e-01          |
+| **Crystalized Intelligence** | 7.2e-02            | 9e-02           | 7.6e-02          |
+| **Fluid Intelligence**       | 3.5e-02            | 2.7e-02         | 4.8e-02          |
+| **Global Intelligence**      | 6.8e-02            | 7.7e-02         | 8.9e-02          |
+| **Impulsivity**              | 7.1e-03            | 2.7e-02         | 8.2e-03          |
+| **Endurance**                | 1e-01              | 1e-01           | 1e-01            |
+| **Verbal Memory**            | 3.3e-03            | 1.2e-02         | 3.7e-03          |
+| **Reading Ability**          | 3.9e-02            | 8.1e-02         | 4.8e-02          |
+| **Attention**                | 3.3e-03            | 6.4e-03         | 4.4e-03          |
+| **Spatial Orientation**      | 7e-02              | 6.1e-02         | 7.2e-02          |
 
-Or with figures: Figure \@ref(fig:standard-plot), or Figure \@ref(fig:morefigs).
+Table 1. Caption. 
 
-```{r standard-plot, out.width="80%", fig.align="center", fig.cap="Great figure!", fig.height=5}
-plot(mtcars[1:2])
-```
 
-```{r morefigs, out.width="80%", echo=TRUE, fig.cap="Amazing, right?!", fig.height=5}
-data <- iris
+![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100%}
 
-plot(x = data$Sepal.Length, 
-     y = data$Sepal.Width, 
-     col = data$Species,
-     pch = 19, 
-     xlab = "Sepal Length (cm)",
-     ylab = "Sepal Width (cm)")
-
-```
-
-# Next Steps
-
-Aliquam sed faucibus risus, quis efficitur erat. Vestibulum semper mauris quis tempus eleifend. Aliquam sagittis dictum ipsum, quis viverra ligula eleifend ut. Curabitur sagittis vitae arcu eget faucibus. In non elementum felis. Duis et aliquam nunc. Nunc pulvinar sapien nunc, vel pretium nisi efficitur in. Fusce fringilla maximus leo et maximus. Fusce at ligula laoreet, iaculis mi at, auctor odio. Praesent sed elementum justo. Aenean consectetur risus rhoncus tincidunt efficitur. Praesent dictum mauris at diam maximus maximus [@R-posterdown].
-
-# Conclusion
-
-Try `posterdown` out! Hopefully you like it!
 
 ```{r include=FALSE}
 knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
 ```
 
 # References
+
+
+Created with [@R-rmarkdown]
