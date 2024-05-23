@@ -51,8 +51,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - We used diffusion data from 1041 participants from the Human Connectome Project, processed into "tract profiles" using pyAFQ (cite) and "local connectome" features using DSI-Studio (cite).
 - LASSO models were run on both tract profiles and local connectome to predict a variety of cognitive outcomes.
-- Sparse Group LASSO (SGL) models were run on only tract profiles, to take advantage of the inherent grouping of the data.
-- Models were implemented in `R` and trained using nested cross-validation and boostrap resampling. 
+- Sparse Group LASSO (SGL) models were run on only tract profiles, to take advantage of the inherent tract groupings.
+- Models were implemented in `R` and trained using nested cross-validation and boostrap resampling (link to code). 
 
 - Explanation of/diagram of SGL here.
 
@@ -62,10 +62,10 @@ knitr::opts_chunk$set(echo = FALSE)
 - For spacing
 
   
-# Results
+# Main Results
 
-- There were no significant differences in the accuracy of models using tract profiles and local connectomes as their input features (Figure 1.)
-- There were significant differences in the variability of model weights for LASSO and SGL models. 
+- There were no significant differences in the accuracy of models using tract profiles and local connectomes as their input features (Table 1.)
+- There were significant differences in the variability of model weights for LASSO and SGL models (Figure 2.) 
 
 <!-- #endregion -->
 
@@ -82,11 +82,22 @@ knitr::opts_chunk$set(echo = FALSE)
 | **Attention**                | 3.3e-03            | 6.4e-03         | 4.4e-03          |
 | **Spatial Orientation**      | 7e-02              | 6.1e-02         | 7.2e-02          |
 
-Table 1. Caption. 
+Table 1. This can be replaced by a condensed version of accuracy fig . 
+
+# Additional Results
+- The inclusion of bootstrapping in our analytic pipeline appeared to decrease the accuracy of the models.** maybe
+- Avoiding leakage by not spltting realted subjects across the train/test splits did not have a significant effect. 
+- Relevant figure here: 
 
 
 ![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100%}
 
+
+
+# Conclusions (rough wording)
+- The selection of model and feature set might not be influential on the accuracy, but may result in less variable, more interpretable models.
+- Tract profiles and local connectome have similar accuracies, but the grouping of tract profiles combined with SGL is good*
+- Splitting families across the train/test splits is bad practice, but didn't have a large effect on the outcome. 
 
 ```{r include=FALSE}
 knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
