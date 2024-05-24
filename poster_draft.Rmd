@@ -1,6 +1,7 @@
 ---
 poster_height: 46in
 poster_width: 33in
+
 title: Evaluating Accuracy and Reliability of Brain-Behavior Models Using Diffusion MRI 
 author:
   - name: McKenzie Paige Hagen
@@ -23,8 +24,12 @@ affiliation:
     address: Department of Biostatistics, University of Washington
   - num: 3
     address: Graduate School of Education, Stanford University
+
+sectitle_bordercol: "4B2E83"
 affiliation_textsize: "16pt" 
 column_numbers: 2
+font_family: "tahoma"
+titletext_fontfamily: "palatino" 
 output: 
   posterdown::posterdown_html:
     self_contained: true
@@ -33,14 +38,26 @@ bibliography: packages.bib
 knit: pagedown::chrome_print
 header-includes: | 
   \usepackage{dcolumn}
-
+#use sans serif font
 ---
+
+<!-- #region -->
+<style> 
+.poster_body h5 { 
+    font-family: "Palatino", "URW Palladio L", "serif"	
+    }
+h5 br {
+    display: none;
+}
+
+
+</style>
+<!-- #endregion -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-<!-- #region -->
 # Background
 
 - Diffusion MRI measures tissue properties of white matter, which contains long-range connections between different brain regions.
@@ -60,29 +77,13 @@ knitr::opts_chunk$set(echo = FALSE)
 - more spacing
 
 - For spacing
-
+- 
+# Conclusions (rough wording)
+- The selection of model and feature set might not be influential on the accuracy, but may result in less variable, more interpretable models.
+- Tract profiles and local connectome have similar accuracies, but the grouping of tract profiles combined with SGL is good*
+- Splitting families across the train/test splits is bad practice, but didn't have a large effect on the outcome. 
   
-# Main Results
 
-- There were no significant differences in the accuracy of models using tract profiles and local connectomes as their input features (Table 1.)
-- There were significant differences in the variability of model weights for LASSO and SGL models (Figure 2.) 
-
-<!-- #endregion -->
-
-|                              | **LASSO**          | **LC**          | **SGL**          |
-|------------------------------|--------------------|-----------------|------------------|
-| **Age**                      | 3e-01              | 1.8e-01         | 3.1e-01          |
-| **Crystalized Intelligence** | 7.2e-02            | 9e-02           | 7.6e-02          |
-| **Fluid Intelligence**       | 3.5e-02            | 2.7e-02         | 4.8e-02          |
-| **Global Intelligence**      | 6.8e-02            | 7.7e-02         | 8.9e-02          |
-| **Impulsivity**              | 7.1e-03            | 2.7e-02         | 8.2e-03          |
-| **Endurance**                | 1e-01              | 1e-01           | 1e-01            |
-| **Verbal Memory**            | 3.3e-03            | 1.2e-02         | 3.7e-03          |
-| **Reading Ability**          | 3.9e-02            | 8.1e-02         | 4.8e-02          |
-| **Attention**                | 3.3e-03            | 6.4e-03         | 4.4e-03          |
-| **Spatial Orientation**      | 7e-02              | 6.1e-02         | 7.2e-02          |
-
-Table 1. This can be replaced by a condensed version of accuracy fig . 
 
 # Additional Results
 - The inclusion of bootstrapping in our analytic pipeline appeared to decrease the accuracy of the models.** maybe
@@ -90,18 +91,30 @@ Table 1. This can be replaced by a condensed version of accuracy fig .
 - Relevant figure here: 
 
 
+
+
+
+This figure needs a title.
+![Caption for the picture.](../hcp-tractometry/Figures/lc_vs_tract-lasso-sgl.png){#id .class width=100% height=100%}
+
+
+
+This Figure also needs a title
 ![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100%}
 
 
 
-# Conclusions (rough wording)
-- The selection of model and feature set might not be influential on the accuracy, but may result in less variable, more interpretable models.
-- Tract profiles and local connectome have similar accuracies, but the grouping of tract profiles combined with SGL is good*
-- Splitting families across the train/test splits is bad practice, but didn't have a large effect on the outcome. 
+
 
 ```{r include=FALSE}
 knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
 ```
+
+# Acknowledgements
+- Krell funding
+- This is another funding logo
+- make soe SPACE 
+
 
 # References
 
