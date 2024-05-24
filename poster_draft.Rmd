@@ -26,10 +26,11 @@ affiliation:
     address: Graduate School of Education, Stanford University
 
 sectitle_bordercol: "4B2E83"
-affiliation_textsize: "16pt" 
+affiliation_textsize: "14pt" 
 column_numbers: 2
 font_family: "tahoma"
 titletext_fontfamily: "palatino" 
+titlebox_height: 
 output: 
   posterdown::posterdown_html:
     self_contained: true
@@ -41,18 +42,32 @@ header-includes: |
 #use sans serif font
 ---
 
-<!-- #region -->
 <style> 
-.poster_body h5 { 
-    font-family: "Palatino", "URW Palladio L", "serif"	
-    }
+.poster_body h1 { 
+    font-family: "Palatino", "URW Palladio L", "serif";
+}
+    
+/*this gets rid of the line break with the affiliations*/  
 h5 br {
     display: none;
 }
 
+.poster_title h3 {
+    font-family: "Palatino", "URW Palladio L", "serif";
 
+} 
+    
+/* This controls the affiliations.
+To modify and re-centr the text, play around with margin-left*/
+.poster_title h5 {
+    font-family: "Palatino", "URW Palladio L", "serif"; 
+    width: 120%;
+    margin-left:-10%;
+} 
+    
+.title_container {
+    height: 165mm; } /* found using trial and error */ 
 </style>
-<!-- #endregion -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -60,24 +75,25 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Background
 
-- Diffusion MRI measures tissue properties of white matter, which contains long-range connections between different brain regions.
-- Raw diffusion data can be engineered into different "feature sets" for use in predictive models. 
-- Comparison of a variety of feature sets and models for both accuracy of predicutions and variance/bias of beta coefficients can help determine which models are more optimal for different feature sets.
-  
+- Diffusion MRI (dMRI) measures tissue properties of white matter, which contains long-range connections between different brain regions.
+- Brain-behavior models can be used link neuroimaging features and phenotypes. 
+
+**Question:** How do sets of features derived from different dMRI processing methods compare in model accuracy and variability? 
+
+
 # Methods
 
-- We used diffusion data from 1041 participants from the Human Connectome Project, processed into "tract profiles" using pyAFQ (cite) and "local connectome" features using DSI-Studio (cite).
-- LASSO models were run on both tract profiles and local connectome to predict a variety of cognitive outcomes.
-- Sparse Group LASSO (SGL) models were run on only tract profiles, to take advantage of the inherent tract groupings.
-- Models were implemented in `R` and trained using nested cross-validation and boostrap resampling (link to code). 
+- Diffusion MRI from 1041 Human Connectome Project participants
+- Processed into "tract profiles" using pyAFQ (cite) and "local connectome" features using DSI-Studio (cite).
+- LASSO models were run on both tract profiles and local connectome. 
+- Sparse Group LASSO (SGL) models  run on only tract profiles.
+- Prediction targets were various cognitive phenotypes. 
+- Models implemented using `R` and trained using nested cross-validation and boostrap resampling.
+ 
+![Caption for the picture.](ohbm_methods.png){#id .class width=80% height=80%}
 
-- Explanation of/diagram of SGL here.
 
-- spacing
-- more spacing
 
-- For spacing
-- 
 # Conclusions (rough wording)
 - The selection of model and feature set might not be influential on the accuracy, but may result in less variable, more interpretable models.
 - Tract profiles and local connectome have similar accuracies, but the grouping of tract profiles combined with SGL is good*
@@ -85,35 +101,22 @@ knitr::opts_chunk$set(echo = FALSE)
   
 
 
-# Additional Results
-- The inclusion of bootstrapping in our analytic pipeline appeared to decrease the accuracy of the models.** maybe
-- Avoiding leakage by not spltting realted subjects across the train/test splits did not have a significant effect. 
-- Relevant figure here: 
-
-
-
-
-
-This figure needs a title.
 ![Caption for the picture.](../hcp-tractometry/Figures/lc_vs_tract-lasso-sgl.png){#id .class width=100% height=100%}
+**Figure 1. This figure needs a title.** This is an informative caption, which tells you things about the figure.
 
 
-
-This Figure also needs a title
 ![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100%}
-
-
-
-
+**Figure 2. This figure needs a title.** This is an informative caption, which tells you things about the figure.
 
 ```{r include=FALSE}
-knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
+#knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
 ```
 
 # Acknowledgements
-- Krell funding
-- This is another funding logo
-- make soe SPACE 
+- Data were provided by the Human Connectome Project, WU-Minn Consortium
+
+- Krell logo, NIH logo
+
 
 
 # References
