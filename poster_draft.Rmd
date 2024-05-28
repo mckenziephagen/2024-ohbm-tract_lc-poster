@@ -1,3 +1,9 @@
+```{r}
+#todo: add CV by family/not family as bullet point
+#add azure and aws logos
+```
+
+```{r active="", eval=FALSE}
 ---
 poster_height: 46in
 poster_width: 33in
@@ -43,6 +49,7 @@ bibliography: [packages.bib, references.bib]
 
 knit: pagedown::chrome_print
 ---
+```
 
 <style> 
 .poster_body h1 { 
@@ -117,7 +124,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
-![This figure needs to be finished.](ohbm_methods.png){#id .class width=80% height=80%}
+![This figure needs to be finished.](images/ohbm_methods.png){#id .class width=80% height=80%}
 
 
 
@@ -138,7 +145,7 @@ knitr::opts_chunk$set(echo = FALSE)
 **Model accuracies for behavioral phenotypes.** All models, regardless of regularization method or feature set performed statistically equivalently. 
 
 
-![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100% }
+![Caption for the picture.](images/fig7.JPEG){#id .class width=100% height=100% }
 **"Age" prediction model weights across tracts for SGL and LASSO.** Solid lines show the mean model weight across bootstraps for every tract, across every node, and the shaded areas show the 95\% confidence intervals of the model weights. Note the reduced y-axis range for SGL.
 
 
@@ -152,7 +159,7 @@ using trial and error.
 
 # Acknowledgements and Funding
 <div style="transform: translate(0px,-95px); height: 30%; padding: 0; float: left" >
-![](nih_logo1.png#logo) ![](nsf_logo.jpeg#logo) 
+![](images/nih_logo1.png#logo) ![](images/nsf_logo.jpeg#logo) 
 </div>
 \
 \
