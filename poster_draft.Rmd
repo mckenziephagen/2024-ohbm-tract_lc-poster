@@ -34,7 +34,11 @@ titletext_fontfamily: "palatino"
 output: 
   posterdown::posterdown_html:
     self_contained: true
-    css: style.css
+    pandoc_args: ["--csl=science-without-titles.csl"]
+
+header-includes:
+    - \usepackage[labelformat=empty]{caption}
+
 bibliography: [packages.bib, references.bib]
 
 knit: pagedown::chrome_print
@@ -69,9 +73,15 @@ To modify and re-centr the text, play around with margin-left*/
     width: 120%;
     margin-left:-10%;
 } 
-
+    
 .title_container {
-    height: 165mm; } /* found using trial and error */ 
+    height: 165mm; }/* found using trial and error */ 
+    
+img[src*='#logo'] { 
+    width: 10%; 
+    height: 10%
+}
+
 </style>
 
 
@@ -87,8 +97,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Diffusion MRI (dMRI) measures tissue properties of white matter, which contains long-range connections between different brain regions.
 - Brain-behavior models can be used link neuroimaging features and phenotypes.
-- dMRI can be processed into model input features in several ways. 
-- There are a multitude of different regularization methods for predictive models. 
+- Researchers have several options to process dMRI data into input features for brain-behavior modeling.
+- Characteristics of feature sets determine which regularization methods are suitable for modeling fitting.
+- I have space for more details here.
 
 **Question:** How do sets of features derived from different dMRI processing methods compare in model accuracy and variability? 
 
@@ -96,7 +107,7 @@ knitr::opts_chunk$set(echo = FALSE)
 # Methods
 
 - Diffusion MRI from 1041 Human Connectome Project participants.
-- Processed into "tract profiles" (2400 features) using pyAFQ and "local connectome fingerprint" (100,000) using DSI-Studio (cite).
+- Processed into "tract profiles" [@Kruper2021-az](2400 features) using pyAFQ and "local connectome fingerprint" (100,000 features) using DSI-Studio [@Yeh2016-hv].
 - LASSO regularizated models fit to tract profiles and local connectomes seperately. 
 - Sparse Group LASSO (SGL) models fit to tract profiles, grouped by tract.
 - Prediction targets were various cognitive phenotypes. 
@@ -106,7 +117,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
-![Caption for the picture.](ohbm_methods.png){#id .class width=80% height=80%}
+![This figure needs to be finished.](ohbm_methods.png){#id .class width=80% height=80%}
 
 
 
@@ -118,8 +129,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - This will be replaced with an insightful comment about the results
 - Lots of space for conclusions
 - Placeholder
-- I just want the results to wrap to the other side
-- 
 
 
 # Results
@@ -129,26 +138,31 @@ knitr::opts_chunk$set(echo = FALSE)
 **Model accuracies for behavioral phenotypes.** All models, regardless of regularization method or feature set performed statistically equivalently. 
 
 
-![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100%}
+![Caption for the picture.](fig7.JPEG){#id .class width=100% height=100% }
 **"Age" prediction model weights across tracts for SGL and LASSO.** Solid lines show the mean model weight across bootstraps for every tract, across every node, and the shaded areas show the 95\% confidence intervals of the model weights. Note the reduced y-axis range for SGL.
-
-```{r include=FALSE}
-#knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
-```
-
-# Acknowledgements
-- Data were provided by the Human Connectome Project, WU-Minn Consortium.
-- Krell logo (DE-SC0023112) , NIH logo, NSF logo
-
 
 
 <!---
-TODO: figure out how to change the reference style. 
-https://citationstyles.org/authors/
+This ended up super fiddly because the images need to be manually placed using 
+style tags to avoid having large whitespaces, which in turn screws up the whole block.
+
+Any image resizing means adding more or less whitespaces, found 
+using trial and error.
 -->
+
+# Acknowledgements and Funding
+<div style="transform: translate(0px,-95px); height: 30%; padding: 0; float: left" >
+![](nih_logo1.png#logo) ![](nsf_logo.jpeg#logo) 
+</div>
+\
+\
+
+
+
+<div style="position: absolute; text-align: left;">
+HCP Boilerplate text\
+</div>
+\
 
 
 # References
-
-
-This is a reference. 
