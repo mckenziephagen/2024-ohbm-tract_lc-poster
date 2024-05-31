@@ -1,9 +1,3 @@
-```{r}
-#todo: add CV by family/not family as bullet point
-#add azure and aws logos
-```
-
-```{r active="", eval=FALSE}
 ---
 poster_height: 46in
 poster_width: 33in
@@ -12,7 +6,7 @@ title: Evaluating Accuracy and Reliability of Brain-Behavior Models Using Diffus
 author:
   - name: McKenzie Paige Hagen
     affil: 1
-    orcid: '0000-0002-1099-3857' #TODO
+    orcid: '0000-0002-7454-8189'
   - name: John Kruper
     affil: 1
   - name: Keshav Motwani
@@ -23,7 +17,9 @@ author:
     affil: 3
   - name: Ariel Rokem
     affil: 1, 4
-    orcid: 0000-0003-0679-1985
+#TODO: fix
+# orcid: 0000-0003-0679-1985
+# ariel's orcid screws up the formatting of the affiliations 
 affiliation:
   - num: 1
     address: Department of Psychology, University of Washington
@@ -35,10 +31,14 @@ affiliation:
     address: University of Washington eScience Institute
 
 primary_colour: "#32006e"
-affiliation_textsize: "14pt"
+affiliation_textsize: "20pt"
+reference_textsize: "16pt"
 column_numbers: 2
 font_family: "tahoma"
 titletext_fontfamily: "palatino"
+
+logoleft_name: "W-Logo_Gold_RGB.png"
+logoright_name: "Block_S_2_color.png"
 
 output:
   posterdown::posterdown_html:
@@ -52,9 +52,9 @@ bibliography: [packages.bib, references.bib]
 
 knit: pagedown::chrome_print
 ---
-```
 
 <style>
+/* change poster body text */
 .poster_body h1 {
     font-family: "Palatino", "URW Palladio L", "serif";
 }
@@ -62,15 +62,19 @@ knit: pagedown::chrome_print
 body {
 bottom-margin: 0px;
 }
+
+/* change color of subsection headers */
 .poster_body h1 {
     background-color: #b7a57a;
     border: #85754d;
+    padding: 0px;
 }
 /*this gets rid of the line break with the affiliations*/
 h5 br {
     display: none;
 }
 
+/* change subsection header texts */
 .poster_title h3 {
     font-family: "Palatino", "URW Palladio L", "serif";
 
@@ -80,8 +84,8 @@ h5 br {
 To modify and re-centr the text, play around with margin-left*/
 .poster_title h5 {
     font-family: "Palatino", "URW Palladio L", "serif";
-    width: 120%;
-    margin-left:-10%;
+/* controls where the text wraps */
+    text-align: center;
 }
 
 .title_container {
@@ -117,16 +121,17 @@ knitr::opts_chunk$set(echo = FALSE)
 # Methods
 
 - Diffusion MRI from 1,041 Human Connectome Project participants.
-- Processed into "tract profiles" [@Kruper2021-az](9,600 features) using pyAFQ ([https://yeatmanlab.github.io/pyAFQ/](https://yeatmanlab.github.io/pyAFQ/)) and "local connectome fingerprint" (100,000 features) using DSI-Studio [@Yeh2016-hv]. <!--- Maybe mention Rasero paper (+ fighsare link?) here?  -->
+- Processed into "tract profiles"[@Kruper2021-az] (9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (100,000 features) using DSI-Studio [@Yeh2016-hv]. <!--- Maybe mention Rasero paper (+ fighsare link?) here?  -->
 - LASSO regularizated models fit to tract profiles and local connectomes seperately.
 - Sparse Group LASSO (SGL) models fit to tract profiles, grouped by tract.
-- Prediction targets were various cognitive phenotypes (following [@rasero2021]).
-- Models implemented in `R` and trained using nested cross-validation and boostrap resampling.
-- Placeholder for more details?
+- Prediction targets were various cognitive phenotypes drawn from prior predictive modeling investigations[@Rasero2021-ef].
+- Models implemented in `R` and trained using nested group cross-validation and boostrap resampling by family.
+- 
 
 
-![This figure needs to be finished.](images/ohbm_methods.png){#id .class width=80% height=80%}
-
+<div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
+![](images/ohbm_methods.png){#id .class width=75% height=50%}
+</div>
 
 
 # Conclusions
@@ -160,18 +165,11 @@ using trial and error.
 
 # Acknowledgements and Funding
 <div style="transform: translate(0px,-95px); height: 30%; padding: 0; float: left" >
-![](images/nih_logo1.png#logo) ![](images/nsf_logo.jpeg#logo) 
+![](csgf_vert.png)  ![](images/nih_logo1.png#logo) ![](images/nsf_logo.jpeg#logo) 
 
 </div>
-\
-\
+Data were provided by the Human Connectome Project, WU-Minn Consortium
 
-
-
-<div style="position: absolute; text-align: left;">
-HCP Boilerplate text\
-</div>
-\
 
 
 # References
