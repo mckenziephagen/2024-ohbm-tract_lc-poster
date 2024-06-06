@@ -113,7 +113,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - Brain-behavior models can be used link neuroimaging features and phenotypes.
 - Researchers have several options to process dMRI data into input features for brain-behavior modeling.
 - Characteristics of feature sets determine which regularization methods are suitable for modeling fitting.
-- I have space for more details here.
 
 **Question:** How do sets of features derived from different dMRI processing methods compare in model accuracy and variability?
 
@@ -121,27 +120,25 @@ knitr::opts_chunk$set(echo = FALSE)
 # Methods
 
 - Diffusion MRI from 1,041 Human Connectome Project participants.
-- Processed into "tract profiles"[@Kruper2021-az] (9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (100,000 features) using DSI-Studio [@Yeh2016-hv]. <!--- Maybe mention Rasero paper (+ fighsare link?) here?  -->
+- Processed into "tract profiles"[@Kruper2021-az] (9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (128,894 features) using DSI-Studio [@Yeh2016-hv] (shared by [@Rasero2021-ef]). 
 - LASSO regularizated models fit to tract profiles and local connectomes seperately.
 - Sparse Group LASSO (SGL) models fit to tract profiles, grouped by tract.
 - Prediction targets were various cognitive phenotypes drawn from prior predictive modeling investigations[@Rasero2021-ef].
 - Models implemented in `R` and trained using nested group cross-validation and boostrap resampling by family.
-- 
+- Additional models were ran without group cross-validation.
 
 
 <div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
-![](images/ohbm_methods.png){#id .class width=75% height=50%}
+![](images/ohbm_methods1.png){#id .class width=75% height=50%}
 </div>
 
 
 # Conclusions
+- Phenotypes vary in their ability to be predicted from features derived from imaging data. 
 - Tractometry contains equivalent predictive information as compared to local connectome, with much fewer features.
-- Utilizing a variety of regularization methods and feature engineering can maximize interpretability of models.
-- this is more conclusions
-- testing page limits
-- This will be replaced with an insightful comment about the results
-- Lots of space for conclusions
-- Placeholder
+- Utilizing a variety of regularization methods and feature engineering can maximize interpretability of models through more stable model weights.
+- Despite concerns about "leakage", there was no difference between model accuracies with and without grouping by family for cross-validation splits for all phenotypes.
+- There's more space here!
 
 
 # Results
@@ -163,10 +160,9 @@ Any image resizing means adding more or less whitespaces, found
 using trial and error.
 -->
 
-# Acknowledgements and Funding
+# Acknowledgements
 <div style="transform: translate(0px,-95px); height: 30%; padding: 0; float: left" >
 ![](csgf_vert.png)  ![](images/nih_logo1.png#logo) ![](images/nsf_logo.jpeg#logo) 
-
 </div>
 Data were provided by the Human Connectome Project, WU-Minn Consortium
 
