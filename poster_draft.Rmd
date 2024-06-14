@@ -75,27 +75,25 @@ bottom-margin: 0px;
 /*this gets rid of the line break with the affiliations*/
 h5 br {
     display: none;
+    
 }
 
 /* This controls the affiliations.*/
 .poster_title h5 {
     font-family: "Palatino", "URW Palladio L", "serif";
     text-align: center;
+    margin-top:-1cm;
 }
 
-    /* change subsection header texts */
+    /* controls author list */
 .poster_title h3 {
     font-family: "Palatino", "URW Palladio L", "serif";
-
+    margin-top:-.51cm;
 }
 
 .title_container {
-    height: 165mm; }/* found using trial and error */
+    height: 150mm; }/* found using trial and error */
 
-#ack { 
-  vertical-align :bottom;
-
-}
 </style>
 
 
@@ -119,41 +117,22 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Methods
 - Processed into "tract profiles" (see [@Kruper2024] for processing details and to access data; 9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (128,894 features) using DSI-Studio [@Yeh2016-hv] (shared by [@Rasero2021-ef]).
-- LASSO regularizated models fit to tract profiles and local connectomes seperately.
-- Sparse Group LASSO (SGL) models fit to tract profiles, grouped by tract.
+- Predictive models were trained using tractometry or local connectome matrices as input features and LASSO or Sparse Group LASSO regularization. 
+
+
+ <div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
+![Tractometry and LC processing diagrams adapted from [@Yeatman2012-lg] and [@Yeh2016-hv]. ](images/ohbm_methods1.png){#id .class width=100% height=100"}
+</div>
+
+
+<p style="margin-top:-3.5cm">
 - Prediction targets were various cognitive phenotypes drawn from prior predictive modeling investigations[@Rasero2021-ef].
 - Models implemented in `R` and trained using nested group cross-validation and boostrap resampling by family. 
-- Models evaluated with and without assigning related individuals to the same fold to evaluate "leakage".
+- Models evaluated with and without grouped cross-validation to evaluate "leakage" of related inviduals. 
+    -
+    -
 
-
-<div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
-![](images/ohbm_methods1.png){#id .class width=100% height=100%}
-</div>
-
-
-# Conclusions
-
-<div style="font-size: 50px;">
-
-- Tractometry contains equivalent predictive information as compared to local connectome, with much fewer features.
-- Utilizing a variety of regularization methods and feature engineering can maximize interpretability of models through more stable model weights.
-- There's more space here!
-- 
-</div>
-
-
-# Results
-
-
-![](../hcp-tractometry/Figures/lc_vs_tract-lasso-sgl.png){#id .class width=100% height=100%}
-
-**Model accuracies for behavioral phenotypes.** All models, regardless of regularization method or feature set performed equivalently. These $R^2$ values are in line with previous literature evaluating brain-behavior predictive models.[@Rasero2021-ef]
-
-- Despite concerns about "leakage", there was no difference between model accuracies with and without grouping by family for cross-validation splits for all phenotypes.
-
-
-![Caption for the picture.](images/fig7.JPEG){#id .class width=100% height=100% }
-**"Age" prediction model weights across tracts for SGL and LASSO.** Solid lines show the mean model weight across bootstraps for every tract, across every node. The shaded areas show the 95\% confidence intervals of the model weights. Note the reduced y-axis range for SGL. This pattern was consistent across phenotypes.
+</p>
 
 
 <!---
@@ -171,12 +150,42 @@ using trial and error.
 Data were provided by the Human Connectome Project, WU-Minn Consortium.
 
 
-<style>
-    
-.ref {place-content: center; margin: 0px;padding: 0px; position: absolute;  translate(0px,-95px);
 
-}
+<style> 
+.ref_title { position:absolute}
 </style>
+# References {#identifier .ref_title}
 
 
-# References {#identifier .ref}
+<div id="refs"></div>
+
+
+
+# Placeholder
+
+
+<p style="margin-top:15cm">
+# Results
+</p>
+
+
+<p style="margin-top:-1cm">
+![](../hcp-tractometry/Figures/lc_vs_tract-lasso-sgl.png){#id .class width=100% height=100%}
+**Model accuracies for behavioral phenotypes.** All models, regardless of regularization method or feature set performed equivalently. These $R^2$ values are in line with previous literature evaluating brain-behavior predictive models.[@Rasero2021-ef]
+</p>
+<p style="margin-top:-1cm">
+- Despite concerns about "leakage", there was no difference between model accuracies with and without grouping by family for cross-validation splits for all phenotypes.
+</p>
+
+
+![Caption for the picture.](images/fig7.JPEG){#id .class width=100% height=100% }
+**"Age" prediction model weights across tracts for SGL and LASSO.** Solid lines show the mean model weight across bootstraps for every tract, across every node. The shaded areas show the 95\% confidence intervals of the model weights. Note the reduced y-axis range for SGL. This pattern was consistent across phenotypes.
+
+
+<p style="margin-top:-1cm">
+# Conclusions
+</p>
+<p style="margin-top:-1cm">
+- Tractometry contains equivalent predictive information as compared to local connectome, with much fewer features.
+- Utilizing a variety of regularization methods and feature engineering can maximize interpretability of models through more stable model weights.
+</p>
