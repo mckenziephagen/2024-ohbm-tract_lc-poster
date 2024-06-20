@@ -121,7 +121,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
  <div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
-![Tractometry and LC processing diagrams adapted from [@Yeatman2012-lg] and [@Yeh2016-hv]. ](images/ohbm_methods1.png){#id .class width=100% height=100"}
+![Tractometry and LC processing diagrams adapted from [@Yeatman2012-lg] and [@Yeh2016-hv]. ](images/ohbm_methods1.jpg){#id .class width=100% height=100"}
 </div>
 
 
@@ -152,19 +152,21 @@ Data were provided by the Human Connectome Project, WU-Minn Consortium.
 
 
 <style> 
-.ref_title { position:absolute}
+.ref_title { position:absolute; width:47% }
 </style>
 # References {#identifier .ref_title}
 
 
-<div id="refs"></div>
+<div id="refs" ></div>
 
 
 
-# Placeholder
+<p style="margin-top:20cm">
+# Results
+</p>
 
 
-<p style="margin-top:15cm">
+<p style="margin-top:20cm">
 # Results
 </p>
 
