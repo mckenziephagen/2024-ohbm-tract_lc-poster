@@ -115,24 +115,23 @@ knitr::opts_chunk$set(echo = FALSE)
 **Question:** How do sets of features derived from different dMRI processing methods compare in model accuracy and variability?
 
 
+<div style="z-index:1; position:relative">
 # Methods
-- Processed into "tract profiles" (see [@Kruper2024] for processing details and to access data; 9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (128,894 features) using DSI-Studio [@Yeh2016-hv] (shared by [@Rasero2021-ef]).
-- Predictive models were trained using tractometry or local connectome matrices as input features and LASSO or Sparse Group LASSO regularization. 
-
-
- <div style="text-align: center; transform: translate(0px,-100px); padding: 0px;">
-
-![Tractometry and LC processing diagrams adapted from [@Yeatman2012-lg] and [@Yeh2016-hv]. ](images/ohbm_methods1.png){#id .class width=100% height=100"}
+- Processed into "tract profiles" (see [@Kruper2024] for processing details and to access data; 9,600 features) using [pyAFQ](https://yeatmanlab.github.io/pyAFQ/) and "local connectome fingerprint" (128,894 features) using [DSI-Studio](https://dsi-studio.labsolver.org) [@Yeh2016-hv] (shared by [@Rasero2021-ef]).
+- Predictive models were trained using tractometry or local connectome matrices as input features and LASSO or Sparse Group LASSO regularization.[@Richie-Halford2021-ms] 
 </div>
 
 
-<p style="margin-top:-3.5cm">
+ <div style="text-align: center; transform: translate(0px,-160px); z-index:0; position:relative">
+
+![Tractometry and LC processing diagrams adapted from [@Yeatman2012-lg] and [@Yeh2016-hv]. ](images/ohbm_methods1.png){#id .class width=100% style="z-index:0; position: relative" }
+</div>
+
+
+<p style="margin-top:-3.8cm">
 - Prediction targets were various cognitive phenotypes drawn from prior predictive modeling investigations[@Rasero2021-ef].
 - Models implemented in `R` and trained using nested group cross-validation and boostrap resampling by family. 
-- Models evaluated with and without grouped cross-validation to evaluate "leakage" of related inviduals. 
-    -
-    -
-
+- Models evaluated with and without grouped cross-validation to check for "leakage" from related inviduals. 
 </p>
 
 
@@ -143,7 +142,6 @@ style tags to avoid having large whitespaces, which in turn screws up the whole 
 Any image resizing means adding more or less whitespaces, found
 using trial and error.
 -->
-
 # Acknowledgements
 <div style="transform: translate(0px,-95px); height: 30%; padding: 0; float: left" >
 ![](csgf_vert.png)  ![](images/nih_logo1.png#logo) ![](images/nsf_logo.jpeg#logo)
@@ -160,17 +158,15 @@ Data were provided by the Human Connectome Project, WU-Minn Consortium.
 
 
 <div id="refs" ></div>
-
+<p style="position: absolute; top: 60%; left: 75%;">
+**Poster Github** 
+</p>
+![](./images/qr.png){height=260 style="position: absolute; top: 8%; left: 78%;"}
 
 
 <p style="margin-top:20cm">
 # Results
 </p>
-
-
-
-
-# Placeholder
 
 
 <p style="margin-top:15cm">
@@ -187,14 +183,17 @@ Data were provided by the Human Connectome Project, WU-Minn Consortium.
 </p>
 
 
+<p style="margin-top:-1cm">
+
 ![Caption for the picture.](images/fig7.JPEG){#id .class width=100% height=100% }
 **"Age" prediction model weights across tracts for SGL and LASSO.** Solid lines show the mean model weight across bootstraps for every tract, across every node. The shaded areas show the 95\% confidence intervals of the model weights. Note the reduced y-axis range for SGL. This pattern was consistent across phenotypes.
+</p>
 
 
 <p style="margin-top:-1cm">
 # Conclusions
 </p>
 <p style="margin-top:-1cm">
-- Tractometry contains equivalent predictive information as compared to local connectome, with much fewer features.
-- Utilizing a variety of regularization methods and feature engineering can maximize interpretability of models through more stable model weights.
+- Tractometry contains as much predictive information as local connectome, with much fewer features.
+- Utilizing a variety of regularization methods that and feature engineering to take advantage of data characteristics can maximize interpretability of models through more stable model weights. 
 </p>
